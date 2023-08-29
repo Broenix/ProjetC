@@ -27,7 +27,7 @@ void savePerroq(const char *perroquet) {
 void chiffrePerroq(const char *source, const char *perroquet, char *chiffree) {
     int sourceLen = strlen(source);
     int perroquetLen = strlen(perroquet);
-    int i = 0; //c'est moche mais ça fonctionne
+    int i = 0;
 
     for (i = 0; i < sourceLen; i++) {
         chiffree[i] = source[i] + perroquet[i % perroquetLen];
@@ -81,6 +81,17 @@ int main() {
                 chiffrePerroq(source, perroquet, chiffree);
 
                 printf("Texte chiffre : %s\n", chiffree);
+
+                FILE *chiffreeFile = fopen("dest.crt", "w");
+                if (chiffreeFile == NULL) {
+                    printf("Erreur lors de l'ouverture du fichier dest.crt\n");
+                    return 1;
+                }
+                fprintf(chiffreeFile, "%s", chiffree);
+                fclose(chiffreeFile);
+
+                remove("source.txt");
+
                 break;
             case 3:
                 printf("Entrez le texte chiffre : ");
@@ -101,3 +112,4 @@ int main() {
 
     return 0;
 }
+
