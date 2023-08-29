@@ -51,6 +51,7 @@ int main() {
     char source[MAX_LEN];
     char chiffree[MAX_LEN];
     char dechiffree[MAX_LEN];
+    char chiffreeDecrypt[MAX_LEN];
 
     printf("Programme de chiffrement 'Perroquet'!\n");
 
@@ -83,10 +84,10 @@ int main() {
                 break;
             case 3:
                 printf("Entrez le texte chiffre : ");
-                scanf(" %[^\n]s", dechiffree);
+                scanf(" %[^\n]s", chiffreeDecrypt);
 
                 readPerroq(perroquet);
-                dechiffrePerroq(chiffree, perroquet, dechiffree);
+                dechiffrePerroq(chiffreeDecrypt, perroquet, dechiffree);
 
                 printf("Texte déchiffre : %s\n", dechiffree);
                 break;
